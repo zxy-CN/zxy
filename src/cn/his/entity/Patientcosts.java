@@ -3,7 +3,7 @@ package cn.his.entity;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Patientcosts {
+public class PatientCosts {
     private Integer id;
 
     private Integer registid;

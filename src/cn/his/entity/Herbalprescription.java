@@ -2,7 +2,7 @@ package cn.his.entity;
 
 import java.util.Date;
 
-public class Herbalprescription {
+public class HerbalPrescription {
     private Integer id;
 
     private Integer medicalid;

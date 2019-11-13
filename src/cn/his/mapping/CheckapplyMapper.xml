@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.his.dao.CheckapplyMapper">
-  <resultMap id="BaseResultMap" type="cn.his.entity.Checkapply">
+<mapper namespace="cn.his.mapper.CheckApplyMapper">
+  <resultMap id="BaseResultMap" type="cn.his.entity.CheckApply">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="MedicalID" jdbcType="INTEGER" property="medicalid" />
     <result column="RegistID" jdbcType="INTEGER" property="registid" />
@@ -28,15 +28,15 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from checkapply
+    from check_apply
     where ID = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from checkapply
+    delete from check_apply
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.his.entity.Checkapply">
-    insert into checkapply (ID, MedicalID, RegistID, 
+  <insert id="insert" parameterType="cn.his.entity.CheckApply">
+    insert into check_apply (ID, MedicalID, RegistID, 
       ItemID, Name, Objective, 
       Position, IsUrgent, Num, 
       CreationTime, DoctorID, CheckOperID, 
@@ -51,8 +51,8 @@
       #{resulttime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, #{recordtype,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.his.entity.Checkapply">
-    insert into checkapply
+  <insert id="insertSelective" parameterType="cn.his.entity.CheckApply">
+    insert into check_apply
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -166,8 +166,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.Checkapply">
-    update checkapply
+  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.CheckApply">
+    update check_apply
     <set>
       <if test="medicalid != null">
         MedicalID = #{medicalid,jdbcType=INTEGER},
@@ -223,8 +223,8 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.his.entity.Checkapply">
-    update checkapply
+  <update id="updateByPrimaryKey" parameterType="cn.his.entity.CheckApply">
+    update check_apply
     set MedicalID = #{medicalid,jdbcType=INTEGER},
       RegistID = #{registid,jdbcType=INTEGER},
       ItemID = #{itemid,jdbcType=INTEGER},

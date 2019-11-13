@@ -2,7 +2,7 @@ package cn.his.entity;
 
 import java.math.BigDecimal;
 
-public class Prescriptiondetailed {
+public class PrescriptionDetailed {
     private Integer id;
 
     private Integer prescriptionid;

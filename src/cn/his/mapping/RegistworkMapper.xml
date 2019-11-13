@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.his.dao.RegistworkMapper">
-  <resultMap id="BaseResultMap" type="cn.his.entity.Registwork">
+<mapper namespace="cn.his.mapper.RegistWorkMapper">
+  <resultMap id="BaseResultMap" type="cn.his.entity.RegistWork">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="RegisterID" jdbcType="INTEGER" property="registerid" />
     <result column="StartTime" jdbcType="TIMESTAMP" property="starttime" />
@@ -13,21 +13,21 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from registwork
+    from regist_work
     where ID = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from registwork
+    delete from regist_work
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.his.entity.Registwork">
-    insert into registwork (ID, RegisterID, StartTime, 
+  <insert id="insert" parameterType="cn.his.entity.RegistWork">
+    insert into regist_work (ID, RegisterID, StartTime, 
       EndTime)
     values (#{id,jdbcType=INTEGER}, #{registerid,jdbcType=INTEGER}, #{starttime,jdbcType=TIMESTAMP}, 
       #{endtime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="cn.his.entity.Registwork">
-    insert into registwork
+  <insert id="insertSelective" parameterType="cn.his.entity.RegistWork">
+    insert into regist_work
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -57,8 +57,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.Registwork">
-    update registwork
+  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.RegistWork">
+    update regist_work
     <set>
       <if test="registerid != null">
         RegisterID = #{registerid,jdbcType=INTEGER},
@@ -72,8 +72,8 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.his.entity.Registwork">
-    update registwork
+  <update id="updateByPrimaryKey" parameterType="cn.his.entity.RegistWork">
+    update regist_work
     set RegisterID = #{registerid,jdbcType=INTEGER},
       StartTime = #{starttime,jdbcType=TIMESTAMP},
       EndTime = #{endtime,jdbcType=TIMESTAMP}

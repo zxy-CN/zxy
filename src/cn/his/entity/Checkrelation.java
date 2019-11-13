@@ -1,6 +1,6 @@
 package cn.his.entity;
 
-public class Checkrelation {
+public class CheckRelation {
     private Integer id;
 
     private Integer checkprojid;

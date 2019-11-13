@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.his.dao.PrescriptiondetailedMapper">
-  <resultMap id="BaseResultMap" type="cn.his.entity.Prescriptiondetailed">
+<mapper namespace="cn.his.mapper.PrescriptionDetailedMapper">
+  <resultMap id="BaseResultMap" type="cn.his.entity.PrescriptionDetailed">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="PrescriptionID" jdbcType="INTEGER" property="prescriptionid" />
     <result column="DrugsID" jdbcType="INTEGER" property="drugsid" />
@@ -17,23 +17,23 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from prescriptiondetailed
+    from prescription_detailed
     where ID = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from prescriptiondetailed
+    delete from prescription_detailed
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.his.entity.Prescriptiondetailed">
-    insert into prescriptiondetailed (ID, PrescriptionID, DrugsID, 
+  <insert id="insert" parameterType="cn.his.entity.PrescriptionDetailed">
+    insert into prescription_detailed (ID, PrescriptionID, DrugsID, 
       DrugsUsage, Dosage, Frequency, 
       Amount, State)
     values (#{id,jdbcType=INTEGER}, #{prescriptionid,jdbcType=INTEGER}, #{drugsid,jdbcType=INTEGER}, 
       #{drugsusage,jdbcType=VARCHAR}, #{dosage,jdbcType=VARCHAR}, #{frequency,jdbcType=VARCHAR}, 
       #{amount,jdbcType=DECIMAL}, #{state,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="cn.his.entity.Prescriptiondetailed">
-    insert into prescriptiondetailed
+  <insert id="insertSelective" parameterType="cn.his.entity.PrescriptionDetailed">
+    insert into prescription_detailed
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -87,8 +87,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.Prescriptiondetailed">
-    update prescriptiondetailed
+  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.PrescriptionDetailed">
+    update prescription_detailed
     <set>
       <if test="prescriptionid != null">
         PrescriptionID = #{prescriptionid,jdbcType=INTEGER},
@@ -114,8 +114,8 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.his.entity.Prescriptiondetailed">
-    update prescriptiondetailed
+  <update id="updateByPrimaryKey" parameterType="cn.his.entity.PrescriptionDetailed">
+    update prescription_detailed
     set PrescriptionID = #{prescriptionid,jdbcType=INTEGER},
       DrugsID = #{drugsid,jdbcType=INTEGER},
       DrugsUsage = #{drugsusage,jdbcType=VARCHAR},

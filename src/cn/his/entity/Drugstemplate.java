@@ -2,7 +2,7 @@ package cn.his.entity;
 
 import java.util.Date;
 
-public class Drugstemplate {
+public class DrugsTemplate {
     private Integer id;
 
     private String name;

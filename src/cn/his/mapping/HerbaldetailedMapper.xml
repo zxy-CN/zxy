@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.his.dao.HerbaldetailedMapper">
-  <resultMap id="BaseResultMap" type="cn.his.entity.Herbaldetailed">
+<mapper namespace="cn.his.mapper.HerbalDetailedMapper">
+  <resultMap id="BaseResultMap" type="cn.his.entity.HerbalDetailed">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="HerbalPresID" jdbcType="INTEGER" property="herbalpresid" />
     <result column="HerbalID" jdbcType="INTEGER" property="herbalid" />
@@ -15,23 +15,23 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from herbaldetailed
+    from herbal_detailed
     where ID = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from herbaldetailed
+    delete from herbal_detailed
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.his.entity.Herbaldetailed">
-    insert into herbaldetailed (ID, HerbalPresID, HerbalID, 
+  <insert id="insert" parameterType="cn.his.entity.HerbalDetailed">
+    insert into herbal_detailed (ID, HerbalPresID, HerbalID, 
       Dosage, Price, Footnote
       )
     values (#{id,jdbcType=INTEGER}, #{herbalpresid,jdbcType=INTEGER}, #{herbalid,jdbcType=INTEGER}, 
       #{dosage,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{footnote,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.his.entity.Herbaldetailed">
-    insert into herbaldetailed
+  <insert id="insertSelective" parameterType="cn.his.entity.HerbalDetailed">
+    insert into herbal_detailed
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -73,8 +73,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.Herbaldetailed">
-    update herbaldetailed
+  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.HerbalDetailed">
+    update herbal_detailed
     <set>
       <if test="herbalpresid != null">
         HerbalPresID = #{herbalpresid,jdbcType=INTEGER},
@@ -94,8 +94,8 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.his.entity.Herbaldetailed">
-    update herbaldetailed
+  <update id="updateByPrimaryKey" parameterType="cn.his.entity.HerbalDetailed">
+    update herbal_detailed
     set HerbalPresID = #{herbalpresid,jdbcType=INTEGER},
       HerbalID = #{herbalid,jdbcType=INTEGER},
       Dosage = #{dosage,jdbcType=VARCHAR},

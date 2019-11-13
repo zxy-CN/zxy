@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.his.dao.DrugsdetailedMapper">
-  <resultMap id="BaseResultMap" type="cn.his.entity.Drugsdetailed">
+<mapper namespace="cn.his.mapper.DrugsDetailedMapper">
+  <resultMap id="BaseResultMap" type="cn.his.entity.DrugsDetailed">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="DrugsTempID" jdbcType="INTEGER" property="drugstempid" />
     <result column="DrugsID" jdbcType="INTEGER" property="drugsid" />
@@ -15,23 +15,23 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from drugsdetailed
+    from drugs_detailed
     where ID = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from drugsdetailed
+    delete from drugs_detailed
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.his.entity.Drugsdetailed">
-    insert into drugsdetailed (ID, DrugsTempID, DrugsID, 
+  <insert id="insert" parameterType="cn.his.entity.DrugsDetailed">
+    insert into drugs_detailed (ID, DrugsTempID, DrugsID, 
       DrugsUsage, Dosage, Frequency
       )
     values (#{id,jdbcType=INTEGER}, #{drugstempid,jdbcType=INTEGER}, #{drugsid,jdbcType=INTEGER}, 
       #{drugsusage,jdbcType=VARCHAR}, #{dosage,jdbcType=VARCHAR}, #{frequency,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.his.entity.Drugsdetailed">
-    insert into drugsdetailed
+  <insert id="insertSelective" parameterType="cn.his.entity.DrugsDetailed">
+    insert into drugs_detailed
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -73,8 +73,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.Drugsdetailed">
-    update drugsdetailed
+  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.DrugsDetailed">
+    update drugs_detailed
     <set>
       <if test="drugstempid != null">
         DrugsTempID = #{drugstempid,jdbcType=INTEGER},
@@ -94,8 +94,8 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.his.entity.Drugsdetailed">
-    update drugsdetailed
+  <update id="updateByPrimaryKey" parameterType="cn.his.entity.DrugsDetailed">
+    update drugs_detailed
     set DrugsTempID = #{drugstempid,jdbcType=INTEGER},
       DrugsID = #{drugsid,jdbcType=INTEGER},
       DrugsUsage = #{drugsusage,jdbcType=VARCHAR},

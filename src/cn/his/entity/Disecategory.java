@@ -1,6 +1,6 @@
 package cn.his.entity;
 
-public class Disecategory {
+public class DiseCategory {
     private Integer id;
 
     private String dicacode;

@@ -2,7 +2,7 @@ package cn.his.entity;
 
 import java.util.Date;
 
-public class Registwork {
+public class RegistWork {
     private Integer id;
 
     private Integer registerid;

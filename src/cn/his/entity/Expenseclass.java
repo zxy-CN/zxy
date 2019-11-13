@@ -1,6 +1,6 @@
 package cn.his.entity;
 
-public class Expenseclass {
+public class ExpenseClass {
     private Integer id;
 
     private String expcode;

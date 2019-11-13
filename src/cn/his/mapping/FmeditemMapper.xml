@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.his.dao.FmeditemMapper">
-  <resultMap id="BaseResultMap" type="cn.his.entity.Fmeditem">
+<mapper namespace="cn.his.mapper.FmedItemMapper">
+  <resultMap id="BaseResultMap" type="cn.his.entity.FmedItem">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="ItemCode" jdbcType="VARCHAR" property="itemcode" />
     <result column="ItemName" jdbcType="VARCHAR" property="itemname" />
@@ -22,15 +22,15 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from fmeditem
+    from fmed_item
     where ID = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from fmeditem
+    delete from fmed_item
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.his.entity.Fmeditem">
-    insert into fmeditem (ID, ItemCode, ItemName, 
+  <insert id="insert" parameterType="cn.his.entity.FmedItem">
+    insert into fmed_item (ID, ItemCode, ItemName, 
       Format, Price, ExpClassID, 
       DeptID, MnemonicCode, CreationDate, 
       LastUpdateDate, RecordType, DelMark
@@ -41,8 +41,8 @@
       #{lastupdatedate,jdbcType=TIMESTAMP}, #{recordtype,jdbcType=INTEGER}, #{delmark,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.his.entity.Fmeditem">
-    insert into fmeditem
+  <insert id="insertSelective" parameterType="cn.his.entity.FmedItem">
+    insert into fmed_item
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -120,8 +120,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.Fmeditem">
-    update fmeditem
+  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.FmedItem">
+    update fmed_item
     <set>
       <if test="itemcode != null">
         ItemCode = #{itemcode,jdbcType=VARCHAR},
@@ -159,8 +159,8 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.his.entity.Fmeditem">
-    update fmeditem
+  <update id="updateByPrimaryKey" parameterType="cn.his.entity.FmedItem">
+    update fmed_item
     set ItemCode = #{itemcode,jdbcType=VARCHAR},
       ItemName = #{itemname,jdbcType=VARCHAR},
       Format = #{format,jdbcType=VARCHAR},

@@ -2,7 +2,7 @@ package cn.his.entity;
 
 import java.util.Date;
 
-public class Checkapply {
+public class CheckApply {
     private Integer id;
 
     private Integer medicalid;

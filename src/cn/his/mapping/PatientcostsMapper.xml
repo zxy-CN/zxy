@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.his.dao.PatientcostsMapper">
-  <resultMap id="BaseResultMap" type="cn.his.entity.Patientcosts">
+<mapper namespace="cn.his.mapper.PatientCostsMapper">
+  <resultMap id="BaseResultMap" type="cn.his.entity.PatientCosts">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="RegistID" jdbcType="INTEGER" property="registid" />
     <result column="InvoiceID" jdbcType="INTEGER" property="invoiceid" />
@@ -25,15 +25,15 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from patientcosts
+    from patient_costs
     where ID = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from patientcosts
+    delete from patient_costs
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.his.entity.Patientcosts">
-    insert into patientcosts (ID, RegistID, InvoiceID, 
+  <insert id="insert" parameterType="cn.his.entity.PatientCosts">
+    insert into patient_costs (ID, RegistID, InvoiceID, 
       ItemID, ItemType, Name, 
       Price, Amount, DeptID, 
       Createtime, CreateOperID, PayTime, 
@@ -46,8 +46,8 @@
       #{registerid,jdbcType=INTEGER}, #{feetype,jdbcType=INTEGER}, #{backid,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.his.entity.Patientcosts">
-    insert into patientcosts
+  <insert id="insertSelective" parameterType="cn.his.entity.PatientCosts">
+    insert into patient_costs
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -143,8 +143,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.Patientcosts">
-    update patientcosts
+  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.PatientCosts">
+    update patient_costs
     <set>
       <if test="registid != null">
         RegistID = #{registid,jdbcType=INTEGER},
@@ -191,8 +191,8 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.his.entity.Patientcosts">
-    update patientcosts
+  <update id="updateByPrimaryKey" parameterType="cn.his.entity.PatientCosts">
+    update patient_costs
     set RegistID = #{registid,jdbcType=INTEGER},
       InvoiceID = #{invoiceid,jdbcType=INTEGER},
       ItemID = #{itemid,jdbcType=INTEGER},

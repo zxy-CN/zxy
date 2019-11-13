@@ -1,6 +1,6 @@
 package cn.his.entity;
 
-public class Herbaltempdetailed {
+public class HerbalTempDetailed {
     private Integer id;
 
     private Integer herbaltempid;

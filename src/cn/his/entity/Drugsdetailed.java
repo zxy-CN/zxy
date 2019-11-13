@@ -1,6 +1,6 @@
 package cn.his.entity;
 
-public class Drugsdetailed {
+public class DrugsDetailed {
     private Integer id;
 
     private Integer drugstempid;

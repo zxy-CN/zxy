@@ -2,7 +2,7 @@ package cn.his.entity;
 
 import java.util.Date;
 
-public class Herbaltemplate {
+public class HerbalTemplate {
     private Integer id;
 
     private String name;

@@ -1,6 +1,6 @@
 package cn.his.entity;
 
-public class Medicalrecord {
+public class MedicalRecord {
     private Integer id;
 
     private String casenumber;

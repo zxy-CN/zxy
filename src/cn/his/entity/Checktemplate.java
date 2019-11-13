@@ -2,7 +2,7 @@ package cn.his.entity;
 
 import java.util.Date;
 
-public class Checktemplate {
+public class CheckTemplate {
     private Integer id;
 
     private String name;

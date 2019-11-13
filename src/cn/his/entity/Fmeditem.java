@@ -3,7 +3,7 @@ package cn.his.entity;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Fmeditem {
+public class FmedItem {
     private Integer id;
 
     private String itemcode;

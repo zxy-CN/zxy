@@ -1,6 +1,6 @@
 package cn.his.entity;
 
-public class Settlecategory {
+public class SettleCategory {
     private Integer id;
 
     private String settlecode;

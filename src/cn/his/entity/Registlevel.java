@@ -2,7 +2,7 @@ package cn.his.entity;
 
 import java.math.BigDecimal;
 
-public class Registlevel {
+public class RegistLevel {
     private Integer id;
 
     private String registcode;

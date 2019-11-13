@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.his.dao.RegistlevelMapper">
-  <resultMap id="BaseResultMap" type="cn.his.entity.Registlevel">
+<mapper namespace="cn.his.mapper.RegistLevelMapper">
+  <resultMap id="BaseResultMap" type="cn.his.entity.RegistLevel">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="RegistCode" jdbcType="VARCHAR" property="registcode" />
     <result column="RegistName" jdbcType="VARCHAR" property="registname" />
@@ -16,23 +16,23 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from registlevel
+    from regist_level
     where ID = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from registlevel
+    delete from regist_level
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.his.entity.Registlevel">
-    insert into registlevel (ID, RegistCode, RegistName, 
+  <insert id="insert" parameterType="cn.his.entity.RegistLevel">
+    insert into regist_level (ID, RegistCode, RegistName, 
       SequenceNo, RegistFee, RegistQuota, 
       DelMark)
     values (#{id,jdbcType=INTEGER}, #{registcode,jdbcType=VARCHAR}, #{registname,jdbcType=VARCHAR}, 
       #{sequenceno,jdbcType=INTEGER}, #{registfee,jdbcType=DECIMAL}, #{registquota,jdbcType=INTEGER}, 
       #{delmark,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="cn.his.entity.Registlevel">
-    insert into registlevel
+  <insert id="insertSelective" parameterType="cn.his.entity.RegistLevel">
+    insert into regist_level
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -80,8 +80,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.Registlevel">
-    update registlevel
+  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.RegistLevel">
+    update regist_level
     <set>
       <if test="registcode != null">
         RegistCode = #{registcode,jdbcType=VARCHAR},
@@ -104,8 +104,8 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.his.entity.Registlevel">
-    update registlevel
+  <update id="updateByPrimaryKey" parameterType="cn.his.entity.RegistLevel">
+    update regist_level
     set RegistCode = #{registcode,jdbcType=VARCHAR},
       RegistName = #{registname,jdbcType=VARCHAR},
       SequenceNo = #{sequenceno,jdbcType=INTEGER},

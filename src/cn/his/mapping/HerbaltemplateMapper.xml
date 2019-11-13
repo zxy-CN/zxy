@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.his.dao.HerbaltemplateMapper">
-  <resultMap id="BaseResultMap" type="cn.his.entity.Herbaltemplate">
+<mapper namespace="cn.his.mapper.HerbalTemplateMapper">
+  <resultMap id="BaseResultMap" type="cn.his.entity.HerbalTemplate">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="Name" jdbcType="VARCHAR" property="name" />
     <result column="DoctorID" jdbcType="INTEGER" property="doctorid" />
@@ -22,15 +22,15 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from herbaltemplate
+    from herbal_template
     where ID = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from herbaltemplate
+    delete from herbal_template
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.his.entity.Herbaltemplate">
-    insert into herbaltemplate (ID, Name, DoctorID, 
+  <insert id="insert" parameterType="cn.his.entity.HerbalTemplate">
+    insert into herbal_template (ID, Name, DoctorID, 
       CreationTime, PrescriptioType, PayNumber, 
       DrugsUsage, Therapy, Detailed, 
       Advice, Scope, DelMark
@@ -41,8 +41,8 @@
       #{advice,jdbcType=VARCHAR}, #{scope,jdbcType=VARCHAR}, #{delmark,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.his.entity.Herbaltemplate">
-    insert into herbaltemplate
+  <insert id="insertSelective" parameterType="cn.his.entity.HerbalTemplate">
+    insert into herbal_template
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
@@ -120,8 +120,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.Herbaltemplate">
-    update herbaltemplate
+  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.HerbalTemplate">
+    update herbal_template
     <set>
       <if test="name != null">
         Name = #{name,jdbcType=VARCHAR},
@@ -159,8 +159,8 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.his.entity.Herbaltemplate">
-    update herbaltemplate
+  <update id="updateByPrimaryKey" parameterType="cn.his.entity.HerbalTemplate">
+    update herbal_template
     set Name = #{name,jdbcType=VARCHAR},
       DoctorID = #{doctorid,jdbcType=INTEGER},
       CreationTime = #{creationtime,jdbcType=TIMESTAMP},
