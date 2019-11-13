@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.his.mapper.CheckRelationMapper">
+  <resultMap id="BaseResultMap" type="cn.his.entity.CheckRelation">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="CheckProjID" jdbcType="INTEGER" property="checkprojid" />
+    <result column="CheckTempID" jdbcType="INTEGER" property="checktempid" />
+    <result column="Position" jdbcType="VARCHAR" property="position" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, CheckProjID, CheckTempID, Position
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from check_relation
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from check_relation
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.his.entity.CheckRelation">
+    insert into check_relation (ID, CheckProjID, CheckTempID, 
+      Position)
+    values (#{id,jdbcType=INTEGER}, #{checkprojid,jdbcType=INTEGER}, #{checktempid,jdbcType=INTEGER}, 
+      #{position,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.his.entity.CheckRelation">
+    insert into check_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="checkprojid != null">
+        CheckProjID,
+      </if>
+      <if test="checktempid != null">
+        CheckTempID,
+      </if>
+      <if test="position != null">
+        Position,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="checkprojid != null">
+        #{checkprojid,jdbcType=INTEGER},
+      </if>
+      <if test="checktempid != null">
+        #{checktempid,jdbcType=INTEGER},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.his.entity.CheckRelation">
+    update check_relation
+    <set>
+      <if test="checkprojid != null">
+        CheckProjID = #{checkprojid,jdbcType=INTEGER},
+      </if>
+      <if test="checktempid != null">
+        CheckTempID = #{checktempid,jdbcType=INTEGER},
+      </if>
+      <if test="position != null">
+        Position = #{position,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.his.entity.CheckRelation">
+    update check_relation
+    set CheckProjID = #{checkprojid,jdbcType=INTEGER},
+      CheckTempID = #{checktempid,jdbcType=INTEGER},
+      Position = #{position,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
