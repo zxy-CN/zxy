@@ -9,6 +9,8 @@ public class CheckRelation {
 
     private String position;
 
+    private FmedItem fmedItem;
+    
     public Integer getId() {
         return id;
     }
@@ -40,4 +42,12 @@ public class CheckRelation {
     public void setPosition(String position) {
         this.position = position == null ? null : position.trim();
     }
+
+	public FmedItem getFmedItem() {
+		return fmedItem;
+	}
+
+	public void setFmedItem(FmedItem fmedItem) {
+		this.fmedItem = fmedItem;
+	}
 }
