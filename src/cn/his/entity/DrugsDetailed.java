@@ -1,18 +1,20 @@
 package cn.his.entity;
 
 public class DrugsDetailed {
-    private Integer id;
+    private Integer id; //成药模板明细id
 
-    private Integer drugstempid;
+    private Integer drugstempid; //成药模板id nn
 
-    private Integer drugsid;
+    private Integer drugsid;//药品id nn
 
-    private String drugsusage;
+    private String drugsusage;//用法
 
-    private String dosage;
+    private String dosage;//用量
 
-    private String frequency;
-
+    private String frequency;//频次
+    
+    private Drugs drugs;//药品对象 
+    
     public Integer getId() {
         return id;
     }
@@ -60,4 +62,12 @@ public class DrugsDetailed {
     public void setFrequency(String frequency) {
         this.frequency = frequency == null ? null : frequency.trim();
     }
+
+	public Drugs getDrugs() {
+		return drugs;
+	}
+
+	public void setDrugs(Drugs drugs) {
+		this.drugs = drugs;
+	}
 }
