@@ -13,6 +13,8 @@ public class HerbalTempDetailed {
 
     private String footnote;
 
+    private Drugs drugs;
+    
     public Integer getId() {
         return id;
     }
@@ -60,4 +62,12 @@ public class HerbalTempDetailed {
     public void setFootnote(String footnote) {
         this.footnote = footnote == null ? null : footnote.trim();
     }
+
+	public Drugs getDrugs() {
+		return drugs;
+	}
+
+	public void setDrugs(Drugs drugs) {
+		this.drugs = drugs;
+	}
 }
