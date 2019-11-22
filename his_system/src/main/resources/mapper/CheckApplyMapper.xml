@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.his.mapper.CheckApplyMapper">
+  <resultMap id="BaseResultMap" type="cn.his.entity.CheckApply">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="MedicalID" jdbcType="INTEGER" property="medicalid" />
+    <result column="RegistID" jdbcType="INTEGER" property="registid" />
+    <result column="ItemID" jdbcType="INTEGER" property="itemid" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Objective" jdbcType="VARCHAR" property="objective" />
+    <result column="Position" jdbcType="VARCHAR" property="position" />
+    <result column="IsUrgent" jdbcType="INTEGER" property="isurgent" />
+    <result column="Num" jdbcType="INTEGER" property="num" />
+    <result column="CreationTime" jdbcType="TIMESTAMP" property="creationtime" />
+    <result column="DoctorID" jdbcType="INTEGER" property="doctorid" />
+    <result column="CheckOperID" jdbcType="INTEGER" property="checkoperid" />
+    <result column="ResultOperID" jdbcType="INTEGER" property="resultoperid" />
+    <result column="CheckTime" jdbcType="TIMESTAMP" property="checktime" />
+    <result column="Result" jdbcType="VARCHAR" property="result" />
+    <result column="ResultTime" jdbcType="TIMESTAMP" property="resulttime" />
+    <result column="State" jdbcType="INTEGER" property="state" />
+    <result column="RecordType" jdbcType="INTEGER" property="recordtype" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, MedicalID, RegistID, ItemID, Name, Objective, Position, IsUrgent, Num, CreationTime, 
+    DoctorID, CheckOperID, ResultOperID, CheckTime, Result, ResultTime, State, RecordType
+  </sql>
+  <select id="selectByRegistId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from check_apply
+    where RegistID = #{RegistID,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectNameList"  resultType="cn.his.entity.CheckNameList">
+    select `register`.`CaseNumber` AS `CaseNumber`,`register`.`RealName` AS `RealName`,`invoice`.`InvoiceNum` AS `InvoiceNum`,`constatnt_item`.`ConstantName` AS `ConstantName`,`settle_category`.`SettleName` AS `SettleName`,`user`.`UserName` AS `UserName`,`register`.`Age` AS `Age`,`department`.`DeptName` AS `DeptName`,`invoice`.`CreationTime` AS `CreationTime`
+    from ((((((`check_apply` join `register`) join `invoice`) join `constatnt_item`) join `settle_category`) join `user`) join `department`)
+    where ((`check_apply`.`RegistID` = `register`.`ID`) and (`invoice`.`RegistID` = `register`.`ID`) and (`register`.`Gender` = `constatnt_item`.`ID`) and (`register`.`DeptID` = `department`.`ID`) and (`register`.`SettleID` = `settle_category`.`ID`) and (`register`.`UserID` = `user`.`ID`))
+    group by `check_apply`.`RegistID`
+  </select>
+
+  <select id="selectNameListByName"  parameterType="java.lang.String" resultType="cn.his.entity.CheckNameList">
+    select `register`.`CaseNumber` AS `CaseNumber`,`register`.`RealName` AS `RealName`,`invoice`.`InvoiceNum` AS `InvoiceNum`,`constatnt_item`.`ConstantName` AS `ConstantName`,`settle_category`.`SettleName` AS `SettleName`,`user`.`UserName` AS `UserName`,`register`.`Age` AS `Age`,`department`.`DeptName` AS `DeptName`,`invoice`.`CreationTime` AS `CreationTime`
+    from ((((((`check_apply` join `register`) join `invoice`) join `constatnt_item`) join `settle_category`) join `user`) join `department`)
+    where ((`check_apply`.`RegistID` = `register`.`ID`) and (`invoice`.`RegistID` = `register`.`ID`) and (`register`.`Gender` = `constatnt_item`.`ID`) and (`register`.`DeptID` = `department`.`ID`) and (`register`.`SettleID` = `settle_category`.`ID`) and (`register`.`UserID` = `user`.`ID`)and (register.RealName LIKE "%"#{realName,jdbcType=VARCHAR}"%"))
+    group by `check_apply`.`RegistID`
+  </select>
+
+  <select id="selectItemByRegistId"  parameterType="cn.his.entity.CheckApply" resultType="cn.his.entity.CheckApply">
+    select Name,Position,Num,Price,Format,State,check_apply.id
+    from check_apply
+    JOIN fmed_item on check_apply.ItemID=fmed_item.ID
+    WHERE RegistID=#{registid,jdbcType=INTEGER} and check_apply.RecordType=#{recordtype,jdbcType=INTEGER}
+  </select>
+
+  <update id="updateState" parameterType="cn.his.entity.Register">
+    update check_apply
+    set State =3
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="returnCost" parameterType="cn.his.entity.Register">
+    update check_apply
+    set State =6
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateDoApply" parameterType="java.lang.Integer">
+    update check_apply
+    set State =5
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateResult" parameterType="hashmap">
+    update check_apply
+    set Result =#{result,jdbcType=VARCHAR} , ResultTime=now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

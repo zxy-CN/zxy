@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.his.mapper.DepartmentMapper">
+  <resultMap id="BaseResultMap" type="cn.his.entity.Department">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="DeptCode" jdbcType="VARCHAR" property="deptcode" />
+    <result column="DeptName" jdbcType="VARCHAR" property="deptname" />
+    <result column="DeptCategoryID" jdbcType="INTEGER" property="deptcategoryid" />
+    <result column="DeptType" jdbcType="INTEGER" property="depttype" />
+    <result column="DelMark" jdbcType="INTEGER" property="delmark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, DeptCode, DeptName, DeptCategoryID, DeptType, DelMark
+  </sql>
+  <select id="selectRegDept" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from department
+    where department.DeptType = 1 OR department.DeptType = 2
+  </select>
+
+</mapper>
